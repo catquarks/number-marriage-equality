@@ -1,0 +1,13 @@
+.story {
+	font-size: 14pt;
+	display: inline-block;
+	margin-top: 2em;
+	background: #fafafa;
+	width: 35em;
+	height: 10em;
+}
+
+pre {
+	padding: 10px;
+	font-family: sans-serif;
+}

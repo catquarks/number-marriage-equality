@@ -1,0 +1,57 @@
+{
+  "story":
+    [
+      {
+        "chapter": "what ${this.state.moopy} a beautiful spring morning.\nthe birds are jumping, the fish are chirping,\nand every little owl is asleep.\n\nwho is our bride-to-be?",
+        "placeholder": "please type a number",
+        "newVariable": "bride",
+        "interpolate": true
+      },
+      {
+        "chapter": "and who is our groom?",
+        "placeholder": "please type another number",
+        "newVariable": "groom"
+      },
+      {
+        "chapter": "dearly beloved,\nwe are gathered here today\nto join together two numbers\nin holy matrimony...",
+        "placeholder": "press enter"
+      },
+      {
+        "chapter": "into this holy estate\nthese two numbers present now come to be joined,\n\nas one number.",
+        "placeholder": "press enter"
+      },
+      {
+        "chapter": "number, do you take number to be your lawfully wedded husband?\nbride: \"I do!\"",
+        "placeholder": "press enter"
+      },
+      {
+        "chapter": "number, do you take number to be your lawfully wedded wife?\ngroom: \"I do!\"",
+        "placeholder": "press enter"
+      },
+      {
+        "chapter": "if any number can show just cause why these two numbers\nmay not be joined together,\n\nlet them speak now,\n\nor forever",
+        "placeholder": "... "
+      },
+      {
+        "chapter": "hold their peace.",
+        "placeholder": "..."
+      },
+      {
+        "chapter": "proceed with holy matrimony?",
+        "placeholder": "type 'I OBJECT!' to cancel",
+        "proceedWithMatrimony": true
+      },
+      {
+        "chapter": "bride and groom...",
+        "placeholder": "..."
+      },
+      {
+        "chapter": "I now pronounce you married!",
+        "placeholder": "!!!"
+      },
+      {
+        "chapter": "blank and blank sittin' in a tree, A-D-D-D-I-N-G!!!",
+        "placeholder": "<3"
+      }
+    ]
+  }

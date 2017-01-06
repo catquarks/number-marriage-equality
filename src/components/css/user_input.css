@@ -1,0 +1,20 @@
+.input-form-wrapper {
+	margin: auto;
+}
+
+.input-form {
+	display: inline-block;
+	margin: auto;
+	background: red;
+}
+
+input[type=text] {
+	width: 18em;
+	border: dotted #f00 3px;
+	padding: 10px;
+	border-radius: 20%;
+}
+
+input[type=text]:focus {
+	border: dotted #ff5555 3px;
+}
