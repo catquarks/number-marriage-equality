@@ -2,7 +2,7 @@
   "story":
     [
       {
-        "chapter": "what ${this.state.moopy} a beautiful spring morning.\nthe birds are jumping, the fish are chirping,\nand every little owl is asleep.\n\nwho is our bride-to-be?",
+        "chapter": "what [moopy] a beautiful spring morning.\nthe birds are jumping, the fish are chirping,\nand every little owl is asleep.\n\nwho is our bride-to-be?",
         "placeholder": "please type a number",
         "newVariable": "bride",
         "interpolate": true
@@ -21,11 +21,13 @@
         "placeholder": "press enter"
       },
       {
-        "chapter": "number, do you take number to be your lawfully wedded husband?\nbride: \"I do!\"",
+        "chapter": "[bride], do you take [groom] to be your lawfully wedded husband?\n[bride]: \"I do!\"",
+        "interpolate": true,
         "placeholder": "press enter"
       },
       {
-        "chapter": "number, do you take number to be your lawfully wedded wife?\ngroom: \"I do!\"",
+        "chapter": "[groom], do you take [bride] to be your lawfully wedded wife?\n[groom]: \"I do!\"",
+        "interpolate": true,
         "placeholder": "press enter"
       },
       {
@@ -42,7 +44,8 @@
         "proceedWithMatrimony": true
       },
       {
-        "chapter": "bride and groom...",
+        "chapter": "[bride] and [groom]...",
+        "interpolate": true,
         "placeholder": "..."
       },
       {
@@ -50,7 +53,8 @@
         "placeholder": "!!!"
       },
       {
-        "chapter": "blank and blank sittin' in a tree, A-D-D-D-I-N-G!!!",
+        "chapter": "[bride] and [groom] sittin' in a tree, A-D-D-D-I-N-G!!!",
+        "interpolate": true,
         "placeholder": "<3"
       }
     ]

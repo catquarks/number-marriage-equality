@@ -15,7 +15,7 @@ class App extends Component {
       groom: null,
       consumation: false,
       currentDisplay: '',
-      testName: "moopy"
+      moopy: "moopy!!"
     }
     this.advanceStep = this.advanceStep.bind(this)
     this.advanceChapter = this.advanceChapter.bind(this)
@@ -101,13 +101,26 @@ class App extends Component {
   }
 
   interpolateString(string){
-    // magic goes here
+    var regEx = /(\[\w+])/
+    var array = string.split(regEx)
+    var characters = array.filter(item => {
+      if (regEx.exec(item)){
+        return item
+      }
+    })
+    var indices = characters.map(item => {
+      return array.indexOf(item)
+    })
+    indices.forEach(index => {
+      array[index] = this.state[array[index].slice(1, -1)]
+    })
+    return array.join("")
   }
 
   render() {
     var currentChapter = this.state.currentChapter
     if (currentChapter.interpolate === true){
-      this.interpolateString(currentChapter.chapter)
+      currentChapter.chapter = this.interpolateString(currentChapter.chapter)
     }
     return (
       <div className="App">
