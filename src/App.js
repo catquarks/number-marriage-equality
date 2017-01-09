@@ -101,16 +101,20 @@ class App extends Component {
   }
 
   interpolateString(string){
-    var regEx = /(\[\w+])/
+    var regEx = /(\[\w+\])/
     var array = string.split(regEx)
     var characters = array.filter(item => {
       if (regEx.exec(item)){
         return item
       }
+      return null
     })
+    // problem: the following should iterate over the array
+    // so that duplicates have unique indices
     var indices = characters.map(item => {
       return array.indexOf(item)
     })
+    debugger
     indices.forEach(index => {
       array[index] = this.state[array[index].slice(1, -1)]
     })
