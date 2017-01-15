@@ -14,6 +14,7 @@ class App extends Component {
       bride: null,
       groom: null,
       married: false,
+      consumation: null,
       currentDisplay: ''
     }
     this.advanceStep = this.advanceStep.bind(this)
@@ -109,12 +110,16 @@ class App extends Component {
   performHolyMatrimony(input){
     if (input !== "I OBJECT!"){
       this.setState({
-        married: true
+        married: true,
+        consumation: this.state.bride + this.state.groom
       })
+    } else {
+      console.log("how dare you stand in the way of love :'(")
     }
   }
 
   interpolateString(string){
+    // big problems ahead
     var regEx = /(\[\w+\])/
     var array = string.split(regEx)
     var characters = array.filter(item => {
