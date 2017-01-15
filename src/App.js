@@ -13,9 +13,8 @@ class App extends Component {
       currentChapter: [{chapter: '', placeholder: '', newVariable: []}],
       bride: null,
       groom: null,
-      consumation: false,
-      currentDisplay: '',
-      moopy: "moopy!!"
+      married: false,
+      currentDisplay: ''
     }
     this.advanceStep = this.advanceStep.bind(this)
     this.advanceChapter = this.advanceChapter.bind(this)
@@ -49,39 +48,54 @@ class App extends Component {
   advanceStep(e, input){
     e.preventDefault()
     e.stopPropagation()
-    if (this.state.bride && this.state.groom){
-      this.setState({
-        consumation: true
-      })
-    }
-    if (input && this.state.consumation === false){
-      this.handleCharacters(input)
-    }
+
+    this.handleInputAndDisplay(input)
 
     if (this.state.currentChapter.proceedWithMatrimony === true){
       this.performHolyMatrimony()
     }
 
     var nextStep = this.state.step + 1
-    // if it's already the last chapter
-    // then don't advance the chapter
-    if (nextStep !== this.state.storyLength){
-      this.setState({
-        step: nextStep
-      })
-    }
-
+    this.setState({step: nextStep})
     this.advanceChapter(nextStep)
   }
 
-  handleCharacters(input){
+  handleInputAndDisplay(input){
+    // handle all new variables
     if (this.state.currentChapter.newVariable){
       var newVariable = this.state.currentChapter.newVariable
       var newState = {}
 
+      // if input is a number, make it a number
+      if (!isNaN(input)){
+        input = parseFloat(input)
+      }
+
       newState[newVariable] = input
-      newState["currentDisplay"] = this.state.currentDisplay + input
+
+      // if bride, show bride
+      if (newVariable === "bride"){
+        this.setState({
+          currentDisplay: input
+        })
+      }
+
+      // if both partners present, show both
+      if (newVariable === "groom"){
+        this.setState({
+          currentDisplay: this.state.bride + " + " + input
+        })
+      }      
+
+      // change bride & groom states
       this.setState(newState)
+    }
+
+    // if married, show the sum
+    if (this.state.married){
+      this.setState({
+        currentDisplay: this.state.bride + this.state.groom
+      })
     }
   }
 
@@ -95,7 +109,7 @@ class App extends Component {
   performHolyMatrimony(input){
     if (input !== "I OBJECT!"){
       this.setState({
-        newVariable: this.state.bride + this.state.groom
+        married: true
       })
     }
   }
@@ -114,7 +128,6 @@ class App extends Component {
     var indices = characters.map(item => {
       return array.indexOf(item)
     })
-    debugger
     indices.forEach(index => {
       array[index] = this.state[array[index].slice(1, -1)]
     })
@@ -122,7 +135,7 @@ class App extends Component {
   }
 
   render() {
-    var currentChapter = this.state.currentChapter
+    const currentChapter = this.state.currentChapter
     if (currentChapter.interpolate === true){
       currentChapter.chapter = this.interpolateString(currentChapter.chapter)
     }

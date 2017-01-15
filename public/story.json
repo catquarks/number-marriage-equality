@@ -2,10 +2,9 @@
   "story":
     [
       {
-        "chapter": "what [moopy] a beautiful spring morning.\nthe birds are jumping, the fish are chirping,\nand every little owl is asleep.\n\nwho is our bride-to-be?",
+        "chapter": "what a beautiful spring morning.\nthe birds are jumping, the fish are chirping,\nand every little owl is asleep.\n\nwho is our bride-to-be?",
         "placeholder": "please type a number",
-        "newVariable": "bride",
-        "interpolate": true
+        "newVariable": "bride"
       },
       {
         "chapter": "and who is our groom?",
@@ -49,7 +48,7 @@
         "placeholder": "..."
       },
       {
-        "chapter": "I now pronounce you married!",
+        "chapter": "I now pronounce you [married]!",
         "placeholder": "!!!"
       },
       {
