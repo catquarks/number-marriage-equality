@@ -95,7 +95,7 @@ class App extends Component {
     // if married, show the sum
     if (this.state.married){
       this.setState({
-        currentDisplay: this.state.bride + this.state.groom
+        currentDisplay: this.state.consumation
       })
     }
   }
@@ -119,24 +119,19 @@ class App extends Component {
   }
 
   interpolateString(string){
-    // big problems ahead
     var regEx = /(\[\w+\])/
     var array = string.split(regEx)
-    var characters = array.filter(item => {
-      if (regEx.exec(item)){
-        return item
+    var stateCopy = this.state
+
+    var interpolatedText = array.map(word => {
+      if (!regEx.exec(word)){
+        return word
+      } else {
+        return stateCopy[word.slice(1, -1)]
       }
-      return null
-    })
-    // problem: the following should iterate over the array
-    // so that duplicates have unique indices
-    var indices = characters.map(item => {
-      return array.indexOf(item)
-    })
-    indices.forEach(index => {
-      array[index] = this.state[array[index].slice(1, -1)]
-    })
-    return array.join("")
+    }).join("")
+
+    return interpolatedText
   }
 
   render() {

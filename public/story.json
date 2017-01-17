@@ -49,7 +49,8 @@
       },
       {
         "chapter": "I now pronounce you [consumation]!",
-        "placeholder": "!!!"
+        "placeholder": "!!!",
+        "interpolate": true
       },
       {
         "chapter": "[bride] and [groom] sittin' in a tree, A-D-D-D-I-N-G!!!",
