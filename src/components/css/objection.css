@@ -1,0 +1,16 @@
+.objection {
+	height: 0;
+	width: auto;
+	display: none;
+}
+
+.confirmed{
+	display: block;
+	z-index: 10;
+	height: 100%;
+	font-size: 100px;
+}
+
+.disaster {
+	display: none;
+}

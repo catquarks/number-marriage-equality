@@ -10,7 +10,7 @@
 
 input[type=text] {
 	width: 18em;
-	border: dotted #f00 3px;
+	border: dashed #b00 1px;
 	padding: 10px;
 	border-radius: 20%;
 }

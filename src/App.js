@@ -3,6 +3,7 @@ import './App.css'
 import Story from './components/story'
 import UserInput from './components/user_input'
 import Display from './components/display'
+import Objection from './components/objection'
 
 class App extends Component {
   constructor(){
@@ -15,7 +16,8 @@ class App extends Component {
       groom: null,
       married: false,
       consumation: null,
-      currentDisplay: ''
+      currentDisplay: '',
+      objection: false
     }
     this.advanceStep = this.advanceStep.bind(this)
     this.advanceChapter = this.advanceChapter.bind(this)
@@ -53,7 +55,7 @@ class App extends Component {
     this.handleInputAndDisplay(input)
 
     if (this.state.currentChapter.proceedWithMatrimony === true){
-      this.performHolyMatrimony()
+      this.performHolyMatrimony(input)
     }
 
     var nextStep = this.state.step + 1
@@ -108,13 +110,15 @@ class App extends Component {
   }
 
   performHolyMatrimony(input){
-    if (input !== "I OBJECT!"){
+    if (!input.includes('object')){
       this.setState({
         married: true,
         consumation: this.state.bride + this.state.groom
       })
     } else {
-      console.log("how dare you stand in the way of love :'(")
+      this.setState({
+        objection: true
+      })
     }
   }
 
@@ -141,6 +145,7 @@ class App extends Component {
     }
     return (
       <div className="App">
+        <Objection disaster={this.state.objection} />
         <h1>Number Marriage</h1>
         <Story chapter={currentChapter.chapter} />
         <br /><br />

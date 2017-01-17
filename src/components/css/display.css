@@ -14,5 +14,6 @@ svg {
 
 svg > text {
 	text-anchor: middle;
-	font-size: 7px;
+	font-family: 'Indie Flower', cursive;
+	font-size: 6px;
 }

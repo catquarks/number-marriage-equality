@@ -1,10 +1,13 @@
 .story {
-	font-size: 14pt;
+	font-size: 18pt;
 	display: inline-block;
-	margin-top: 2em;
+	margin-top: 0.25em;
 	background: #fafafa;
-	width: 35em;
-	height: 10em;
+	width: 27em;
+	height: 9em;
+	border: dashed #b00 2px;
+	border-radius: 10%;
+
 }
 
 pre {
