@@ -3,7 +3,8 @@ import './css/restart.css'
 
 class Restart extends Component {
 	render(){
-		if (this.props.endReached === true){
+		// this should disappear again when pushed and 'else' doesn't work
+		if (this.props.endReached){
 			document.getElementById("restartButton").className = "visible"
 		}
 

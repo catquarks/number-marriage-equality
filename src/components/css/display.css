@@ -4,12 +4,15 @@ svg {
 	height: 500px;
 }
 
-.heart {
+#heart {
 	width: 500px;
 	height: 500px;
-	fill: #cc2121;
 	width: 50%;
-	/*stroke: #dd3232;*/
+	fill: #dd3232;
+}
+
+.married-heart {
+	fill: #cc2121;
 }
 
 svg > text {

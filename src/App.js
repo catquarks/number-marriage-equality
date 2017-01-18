@@ -14,7 +14,7 @@ class App extends Component {
       story: {},
       storyLength: 0,
       step: 0,
-      currentChapter: [{chapter: '', placeholder: '', newVariable: ''}],
+      currentChapter: {chapter: '', placeholder: '', newVariable: ''},
       bride: null,
       groom: null,
       married: false,
@@ -59,17 +59,21 @@ class App extends Component {
 
     this.handleInputAndDisplay(input)
 
-    if (this.state.currentChapter.proceedWithMatrimony === true){
+    if (this.state.currentChapter.proceedWithMatrimony){
       this.performHolyMatrimony(input)
     }
 
-    if (this.state.consumation){
-      this.setState({
-        endReached: true
-      })
+    var nextStep = this.state.step + 1
+
+    if (this.state.married){
+      // user isn't allowed to restart if they object!
+      if (nextStep === this.state.storyLength - 1){
+        this.setState({
+          endReached: true
+        })
+      }      
     }
 
-    var nextStep = this.state.step + 1
     this.setState({step: nextStep})
     this.advanceChapter(nextStep)
   }
@@ -120,14 +124,15 @@ class App extends Component {
   }
 
   performHolyMatrimony(input){
-    if (!input.toLowerCase().includes('object') || input.toLowerCase().includes('objection') ){
+    if (!input.toLowerCase().includes('object')){
       this.setState({
         married: true,
         consumation: this.state.bride + this.state.groom
       })
     } else {
       this.setState({
-        objection: true
+        objection: true,
+        currentChapter: {placeholder: 'nothing'}
       })
     }
   }
@@ -149,6 +154,7 @@ class App extends Component {
   }
 
   restartApp(){
+    // bug: this doesn't erase the previous couple
     this.setState({
       step: 0,
       currentChapter: this.state.story[0],
@@ -164,7 +170,7 @@ class App extends Component {
 
   render() {
     const currentChapter = this.state.currentChapter
-    if (currentChapter.interpolate === true){
+    if (currentChapter.interpolate){
       currentChapter.chapter = this.interpolateString(currentChapter.chapter)
     }
 
@@ -176,7 +182,7 @@ class App extends Component {
         <br /><br />
         <UserInput advanceStep={this.advanceStep} placeholder={currentChapter.placeholder} />
         <Restart endReached={this.state.endReached} restartApp={this.restartApp} />
-        <Display characters={this.state.currentDisplay} />
+        <Display characters={this.state.currentDisplay} endReached={this.state.endReached} />
         <Byline />
       </div>
     )
