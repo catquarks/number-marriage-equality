@@ -3,7 +3,7 @@ import './css/display.css'
 
 class Display extends Component {
 	render(){
-		if (this.props.endReached){
+		if (this.props.married){
 			document.getElementById("heart").style.fill = "#cc2121"
 		}
 		return(

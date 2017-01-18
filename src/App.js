@@ -188,7 +188,7 @@ class App extends Component {
         <br /><br />
         <UserInput advanceStep={this.advanceStep} placeholder={currentChapter.placeholder} />
         <Restart endReached={this.state.endReached} restartApp={this.restartApp} />
-        <Display characters={this.state.currentDisplay} endReached={this.state.endReached} />
+        <Display characters={this.state.currentDisplay} married={this.state.married} />
         <Byline />
       </div>
     )
