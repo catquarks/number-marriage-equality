@@ -17,6 +17,7 @@ May love be with you always.
 * ~~User MUST enter both parties of marriage!~~ revised: NaNs are allowed to marry too.
 * Make heart and story area sizes responsive to bride and groom
 * write tests to verify all these rules are being followed
+* refactor handleInputAndDisplay
 
 ## Potential Ideas
 * Instead of just concatenating non-numbers, maybe convert letters A-F to hex

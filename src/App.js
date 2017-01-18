@@ -97,21 +97,18 @@ class App extends Component {
 
       newState[newVariable] = input
 
-      // if bride, show bride
       if (newVariable === "bride"){
         this.setState({
           currentDisplay: input
         })
       }
 
-      // if both partners present, show both
       if (newVariable === "groom"){
         this.setState({
           currentDisplay: this.state.bride + " + " + input
         })
       }      
 
-      // change bride & groom states
       this.setState(newState)
     }
 
@@ -177,6 +174,7 @@ class App extends Component {
     // bug: this causes the interpolated values
     // to not actually change back
     // after app has been restarted
+    // but changing state here is bad!
     const currentChapter = this.state.currentChapter
     if (currentChapter.interpolate){
       currentChapter.chapter = this.interpolateString(currentChapter.chapter)
