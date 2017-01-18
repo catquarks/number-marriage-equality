@@ -74,8 +74,15 @@ class App extends Component {
       }      
     }
 
-    this.setState({step: nextStep})
-    this.advanceChapter(nextStep)
+    if (!this.state.objection){
+      this.setState({step: nextStep})
+      this.advanceChapter(nextStep)
+    } else {
+      this.setState({
+        currentChapter: {placeholder: "it's too late"}
+      })
+    }
+
   }
 
   handleInputAndDisplay(input){
@@ -131,8 +138,7 @@ class App extends Component {
       })
     } else {
       this.setState({
-        objection: true,
-        currentChapter: {placeholder: 'nothing'}
+        objection: true
       })
     }
   }
@@ -154,7 +160,6 @@ class App extends Component {
   }
 
   restartApp(){
-    // bug: this doesn't erase the previous couple
     this.setState({
       step: 0,
       currentChapter: this.state.story[0],
@@ -169,6 +174,9 @@ class App extends Component {
   }
 
   render() {
+    // bug: this causes the interpolated values
+    // to not actually change back
+    // after app has been restarted
     const currentChapter = this.state.currentChapter
     if (currentChapter.interpolate){
       currentChapter.chapter = this.interpolateString(currentChapter.chapter)

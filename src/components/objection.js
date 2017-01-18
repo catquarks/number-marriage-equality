@@ -4,8 +4,7 @@ import './css/objection.css'
 class Objection extends Component {
 	render(){
 		if (this.props.objection === true){
-			// placeholder does not change!
-			document.getElementsByTagName("input")[0].placeholder = "it's too late"
+			// move this somewhere else
 			document.getElementById("objection").className = "visible"
 			document.getElementById("story").className = "invisible"
 			document.getElementById("display").className = "invisible"

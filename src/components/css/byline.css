@@ -19,5 +19,10 @@
 }
 
 #byline a {
+	text-decoration: none;
 	color: red;
+}
+
+#byline a:hover {
+	text-decoration: underline;
 }
