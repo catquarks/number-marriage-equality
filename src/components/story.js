@@ -5,7 +5,7 @@ class Story extends Component {
 
 	render(){
 		return(
-			<div className="story">
+			<div id="story" className="inlineblock">
 				<pre>{this.props.chapter}</pre>
 			</div>
 		)

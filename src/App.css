@@ -17,3 +17,11 @@ h1 {
 	font-size: 3em;
 	text-shadow: 2px 2px 3px #dd3232;
 }
+
+.invisible {
+	display: none;
+}
+
+.visible {
+	display: block;
+}

@@ -10,12 +10,11 @@ May love be with you always.
 
 ## TO-DOs:
 * ~~Get string interpolation working from JSON story data~~
-* ~~App should give you a hard time if you type 'I OBJECT!' or just ruin the entire app~~
+* ~~'I OBJECT!'~~
 * ~~Make title look less icky~~
-* Add a 'restart' option at the very end with component that shows up then
+* ~~Add a 'restart' option at the very end~~
 * ~~If bride and groom are both numbers, marriage should culiminate in a sum~~
 * User MUST enter both parties of marriage!
-* Make font size bigger
 * Make heart and story area sizes responsive to bride and groom
 
 ## Potential Ideas

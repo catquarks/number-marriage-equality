@@ -1,16 +1,5 @@
-.objection {
-	height: 0;
-	width: auto;
-	display: none;
-}
-
-.confirmed{
-	display: block;
-	z-index: 10;
-	height: 100%;
-	font-size: 100px;
-}
-
-.disaster {
-	display: none;
+h2 {
+	color: #990000;
+	font-size: 5em;
+	text-shadow: 2px 2px 3px #dd3232;
 }

@@ -3,18 +3,16 @@ import './css/objection.css'
 
 class Objection extends Component {
 	render(){
-		if (this.props.disaster === true){
-			// why does placeholder text take longer??
-			document.getElementsByTagName("input")[0].placeholder = "love is dead"
-			document.getElementsByTagName("input")[0].value = ""
-			document.getElementsByClassName("objection")[0].className = "confirmed"
-			document.getElementsByClassName("story")[0].className = "disaster"
-			document.getElementsByClassName("display")[0].className = "disaster"
-			document.getElementsByTagName("h1")[0].innerHTML = "i hate you"
+		if (this.props.objection === true){
+			document.getElementsByTagName("input")[0].placeholder = "it's too late"
+			document.getElementById("objection").className = "visible"
+			document.getElementById("story").className = "invisible"
+			document.getElementById("display").className = "invisible"
+			document.getElementsByTagName("h1")[0].className = "invisible"
 		}
 		return(
-			<div className="objection">
-				YOU'RE A MONSTER
+			<div id="objection" className="invisible">
+				<h2>love is dead</h2>
 			</div>
 		)
 	}

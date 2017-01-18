@@ -4,23 +4,28 @@ import Story from './components/story'
 import UserInput from './components/user_input'
 import Display from './components/display'
 import Objection from './components/objection'
+import Restart from './components/restart'
+import Byline from './components/byline'
 
 class App extends Component {
   constructor(){
     super()
     this.state={
       story: {},
+      storyLength: 0,
       step: 0,
-      currentChapter: [{chapter: '', placeholder: '', newVariable: []}],
+      currentChapter: [{chapter: '', placeholder: '', newVariable: ''}],
       bride: null,
       groom: null,
       married: false,
       consumation: null,
       currentDisplay: '',
-      objection: false
+      objection: false,
+      endReached: false
     }
     this.advanceStep = this.advanceStep.bind(this)
     this.advanceChapter = this.advanceChapter.bind(this)
+    this.restartApp = this.restartApp.bind(this)
   }
 
   componentDidMount(){
@@ -37,7 +42,7 @@ class App extends Component {
             currentChapter: story[0]
           })
         } else {
-          console.err(xhr.statusText)
+          console.error(xhr.statusText)
         }
       }
     }.bind(this)
@@ -58,13 +63,18 @@ class App extends Component {
       this.performHolyMatrimony(input)
     }
 
+    if (this.state.consumation){
+      this.setState({
+        endReached: true
+      })
+    }
+
     var nextStep = this.state.step + 1
     this.setState({step: nextStep})
     this.advanceChapter(nextStep)
   }
 
   handleInputAndDisplay(input){
-    // handle all new variables
     if (this.state.currentChapter.newVariable){
       var newVariable = this.state.currentChapter.newVariable
       var newState = {}
@@ -110,7 +120,7 @@ class App extends Component {
   }
 
   performHolyMatrimony(input){
-    if (!input.includes('object')){
+    if (!input.toLowerCase().includes('object') || input.toLowerCase().includes('objection') ){
       this.setState({
         married: true,
         consumation: this.state.bride + this.state.groom
@@ -138,19 +148,36 @@ class App extends Component {
     return interpolatedText
   }
 
+  restartApp(){
+    this.setState({
+      step: 0,
+      currentChapter: this.state.story[0],
+      bride: null,
+      groom: null,
+      married: false,
+      consumation: null,
+      currentDisplay: '',
+      objection: false,
+      endReached: false
+    })
+  }
+
   render() {
     const currentChapter = this.state.currentChapter
     if (currentChapter.interpolate === true){
       currentChapter.chapter = this.interpolateString(currentChapter.chapter)
     }
+
     return (
       <div className="App">
-        <Objection disaster={this.state.objection} />
+        <Objection objection={this.state.objection} />
         <h1>Number Marriage</h1>
         <Story chapter={currentChapter.chapter} />
         <br /><br />
         <UserInput advanceStep={this.advanceStep} placeholder={currentChapter.placeholder} />
+        <Restart endReached={this.state.endReached} restartApp={this.restartApp} />
         <Display characters={this.state.currentDisplay} />
+        <Byline />
       </div>
     )
   }

@@ -55,7 +55,8 @@
       {
         "chapter": "[bride] and [groom] sittin' in a tree, A-D-D-D-I-N-G!!!",
         "interpolate": true,
-        "placeholder": "<3"
+        "placeholder": "<3",
+        "endReached": true
       }
     ]
   }

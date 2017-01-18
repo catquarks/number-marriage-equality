@@ -1,6 +1,5 @@
-.story {
+#story {
 	font-size: 18pt;
-	display: inline-block;
 	margin-top: 0.25em;
 	background: #fafafa;
 	width: 27em;
@@ -8,6 +7,11 @@
 	border: dashed #b00 2px;
 	border-radius: 10%;
 
+}
+
+.inlineblock {
+	/* weird, but necessary for story box to disappear in case of objection */
+	display: inline-block;
 }
 
 pre {
