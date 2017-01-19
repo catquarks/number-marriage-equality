@@ -9,6 +9,7 @@ Number Marriage Equality should really just be called Number Marriage, but we wa
 May love be with you always.
 
 ## TO-DOs:
+* components should only interpet app state, and app state should be the only thing interpreting JSON
 * ~~Get string interpolation working from JSON story data~~
 * ~~'I OBJECT!'~~
 * ~~Make title look less icky~~

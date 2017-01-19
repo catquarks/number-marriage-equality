@@ -4,7 +4,8 @@
       {
         "chapter": "what a beautiful spring morning.\nthe birds are jumping, the fish are chirping,\nand every little owl is asleep.\n\nwho is our bride-to-be?",
         "placeholder": "please type a number",
-        "newVariable": "bride"
+        "newVariable": "bride",
+        "changeHeart": false
       },
       {
         "chapter": "and who is our groom?",
@@ -50,7 +51,8 @@
       {
         "chapter": "I now pronounce you [consumation]!",
         "placeholder": "!!!",
-        "interpolate": true
+        "interpolate": true,
+        "changeHeart": true
       },
       {
         "chapter": "[bride] and [groom] sittin' in a tree, A-D-D-D-I-N-G!!!",

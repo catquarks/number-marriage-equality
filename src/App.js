@@ -10,7 +10,7 @@ import Byline from './components/byline'
 class App extends Component {
   constructor(){
     super()
-    this.state={
+    this.state = {
       story: {},
       storyLength: 0,
       step: 0,
@@ -21,11 +21,13 @@ class App extends Component {
       consumation: null,
       currentDisplay: '',
       objection: false,
-      endReached: false
+      endReached: false,
+      heartColor: 0
     }
     this.advanceStep = this.advanceStep.bind(this)
     this.advanceChapter = this.advanceChapter.bind(this)
     this.restartApp = this.restartApp.bind(this)
+    this.stopWedding = this.stopWedding.bind(this)
   }
 
   componentDidMount(){
@@ -66,7 +68,6 @@ class App extends Component {
     var nextStep = this.state.step + 1
 
     if (this.state.married){
-      // user isn't allowed to restart if they object!
       if (nextStep === this.state.storyLength - 1){
         this.setState({
           endReached: true
@@ -82,7 +83,6 @@ class App extends Component {
         currentChapter: {placeholder: "it's too late"}
       })
     }
-
   }
 
   handleInputAndDisplay(input){
@@ -156,6 +156,14 @@ class App extends Component {
     return interpolatedText
   }
 
+  stopWedding(){
+    // is there a more React-y way to do this?
+    document.getElementById("objection").className = "visible"
+    document.getElementById("story").className = "invisible"
+    document.getElementById("display").className = "invisible"
+    document.getElementsByTagName("h1")[0].className = "invisible"
+  }
+
   restartApp(){
     this.setState({
       step: 0,
@@ -166,29 +174,22 @@ class App extends Component {
       consumation: null,
       currentDisplay: '',
       objection: false,
-      endReached: false
+      endReached: false,
+      heartColor: 0
     })
   }
 
   render() {
-    // bug: this causes the interpolated values
-    // to not actually change back
-    // after app has been restarted
-    // but changing state here is bad!
     const currentChapter = this.state.currentChapter
-    if (currentChapter.interpolate){
-      currentChapter.chapter = this.interpolateString(currentChapter.chapter)
-    }
-
     return (
       <div className="App">
-        <Objection objection={this.state.objection} />
+        <Objection objection={this.state.objection} stopWedding={this.stopWedding} />
         <h1>Number Marriage</h1>
-        <Story chapter={currentChapter.chapter} />
+        <Story currentChapter={currentChapter} interpolateString={this.interpolateString.bind(this)} />
         <br /><br />
         <UserInput advanceStep={this.advanceStep} placeholder={currentChapter.placeholder} />
         <Restart endReached={this.state.endReached} restartApp={this.restartApp} />
-        <Display characters={this.state.currentDisplay} married={this.state.married} />
+        <Display characters={this.state.currentDisplay} heartColor={this.state.heartColor} />
         <Byline />
       </div>
     )

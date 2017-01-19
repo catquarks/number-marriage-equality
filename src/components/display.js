@@ -2,10 +2,16 @@ import React, {Component} from 'react'
 import './css/display.css'
 
 class Display extends Component {
-	render(){
-		if (this.props.married){
+	handleChangeOfHeart(){
 			document.getElementById("heart").style.fill = "#cc2121"
+	}
+
+	render(){
+
+		if (this.props.heartColor === 1){
+			this.handleChangeOfHeart()
 		}
+
 		return(
 			<div id="display">
 				<svg viewBox="0 0 32 29.6">
