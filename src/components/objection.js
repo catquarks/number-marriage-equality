@@ -3,7 +3,7 @@ import './css/objection.css'
 
 class Objection extends Component {
 	render(){
-		if (this.props.objection === true){
+		if (this.props.objection){
 			// move this somewhere else
 			document.getElementById("objection").className = "visible"
 			document.getElementById("story").className = "invisible"
