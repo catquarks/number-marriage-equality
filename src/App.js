@@ -67,6 +67,7 @@ class App extends Component {
 
     var nextStep = this.state.step + 1
 
+    // put this stuff in helper methods
     if (this.state.married){
       if (nextStep === this.state.storyLength - 1){
         this.setState({
