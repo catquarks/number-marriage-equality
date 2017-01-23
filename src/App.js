@@ -160,6 +160,7 @@ class App extends Component {
   stopWedding(){
     // is there a more React-y way to do this?
     document.getElementById("objection").className = "visible"
+    document.getElementById("user-input").className = "invisible"
     document.getElementById("story").className = "invisible"
     document.getElementById("display").className = "invisible"
     document.getElementsByTagName("h1")[0].className = "invisible"

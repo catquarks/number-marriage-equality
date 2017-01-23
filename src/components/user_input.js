@@ -11,7 +11,7 @@ class UserInput extends Component {
 
 	render(){
 		return(
-			<div className="input-form-wrapper">
+			<div id="user-input" className="input-form-wrapper">
 				<div className="input-form">
 					<form onSubmit={(event) => {
 						this.props.advanceStep(event, this.state.input)
