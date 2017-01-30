@@ -3,7 +3,7 @@ import './css/display.css'
 
 class Display extends Component {
 	handleChangeOfHeart(){
-			document.getElementById("heart").style.fill = "#cc2121"
+		document.getElementById("heart").style.fill = "#cc2121"
 	}
 
 	render(){

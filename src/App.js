@@ -4,7 +4,6 @@ import Story from './components/story'
 import UserInput from './components/user_input'
 import Display from './components/display'
 import Objection from './components/objection'
-import Restart from './components/restart'
 import Byline from './components/byline'
 
 class App extends Component {
@@ -190,7 +189,6 @@ class App extends Component {
         <Story currentChapter={currentChapter} interpolateString={this.interpolateString.bind(this)} />
         <br /><br />
         <UserInput advanceStep={this.advanceStep} placeholder={currentChapter.placeholder} />
-        <Restart endReached={this.state.endReached} restartApp={this.restartApp} />
         <Display characters={this.state.currentDisplay} heartColor={this.state.heartColor} />
         <Byline />
       </div>
