@@ -12,6 +12,5 @@ export default function(props) {
 				}>Restart</a>
 			</div>
 		)
-
 }
 

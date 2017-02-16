@@ -11,7 +11,7 @@ May love be with you always.
 Special Note: I purposefully did NOT use Redux in this project in an attempt to learn to appreciate Redux all the better!
 
 ## TO-DOs:
-* components should only interpet app state, and app state should be the only thing interpreting JSON
+* ~~components should only interpet app state, and app state should be the only thing interpreting JSON~~
 * ~~Get string interpolation working from JSON story data~~
 * ~~'I OBJECT!'~~
 * ~~Make title look less icky~~
@@ -20,7 +20,7 @@ Special Note: I purposefully did NOT use Redux in this project in an attempt to 
 * ~~User MUST enter both parties of marriage!~~ revised: NaNs are allowed to marry too.
 * Make heart and story area sizes responsive to bride and groom
 * write tests to verify all these rules are being followed
-* refactor handleInputAndDisplay
+* ~~refactor handleInputAndDisplay~~
 
 ## Potential Ideas
 * Instead of just concatenating non-numbers, maybe convert letters A-F to hex
