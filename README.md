@@ -21,7 +21,7 @@ Special Note: I purposefully did NOT use Redux in this project in an attempt to 
 * Make heart and story area sizes responsive to bride and groom
 * write tests to verify all these rules are being followed
 * ~~refactor handleInputAndDisplay~~
+* Instead of just concatenating non-numbers, maybe convert letters A-F to hex
 
 ## Potential Ideas
-* Instead of just concatenating non-numbers, maybe convert letters A-F to hex
 * Why can't more than 2 characters get married?
