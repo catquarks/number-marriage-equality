@@ -141,21 +141,7 @@ class App extends Component {
     }
   }
 
-  interpolateString(string){
-    var regEx = /(\[\w+\])/
-    var array = string.split(regEx)
-    var stateCopy = this.state
 
-    var interpolatedText = array.map(word => {
-      if (!regEx.exec(word)){
-        return word
-      } else {
-        return stateCopy[word.slice(1, -1)]
-      }
-    }).join("")
-
-    return interpolatedText
-  }
 
   stopWedding(){
     // is there a more React-y way to do this?
@@ -186,7 +172,7 @@ class App extends Component {
       <div className="App">
         <Objection objection={this.state.objection} stopWedding={this.stopWedding} />
         <h1>Number Marriage</h1>
-        <Story currentChapter={currentChapter} interpolateString={this.interpolateString.bind(this)} />
+        <Story currentChapter={currentChapter} bride={this.state.bride} groom={this.state.groom} />
         <br /><br />
         <UserInput advanceStep={this.advanceStep} placeholder={currentChapter.placeholder} />
         <Restart endReached={this.state.endReached} restartApp={this.restartApp} />

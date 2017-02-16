@@ -1,21 +1,37 @@
-import React, {Component} from 'react'
+import React from 'react'
 import './css/story.css'
 
-class Story extends Component {
+export default function(props){
 
-	render(){
-    // bug: this causes the interpolated values
-    // to not actually change back
-    // after app has been restarted
-    if (this.props.currentChapter.interpolate){
-      this.props.currentChapter.chapter = this.props.interpolateString(this.props.currentChapter.chapter)
-    }
+  function interpolateString(string){
+    var regEx = /(\[\w+\])/
+    var array = string.split(regEx)
+    var brideGroom = {bride: props.bride, groom: props.groom}
+
+    var interpolatedText = array.map(word => {
+      if (!regEx.exec(word)){
+        return word
+      } else {
+        return brideGroom[word.slice(1, -1)]
+      }
+    }).join("")
+
+    return interpolatedText
+  }
+
+  if (props.currentChapter.interpolate){
 		return(
 			<div id="story" className="inlineblock">
-				<pre>{this.props.currentChapter.chapter}</pre>
+				<pre>{interpolateString(props.currentChapter.chapter)}</pre>
 			</div>
 		)
-	}
+
+  } else {
+		return(
+			<div id="story" className="inlineblock">
+				<pre>{props.currentChapter.chapter}</pre>
+			</div>
+		)
+  }
 }
 
-export default Story
