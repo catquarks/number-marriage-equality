@@ -1,28 +1,22 @@
-import React, {Component} from 'react'
+import React from 'react'
 import './css/objection.css'
 
-class Objection extends Component {
-	constructor(props){
-		super()
-	}
+export default function(props){
 
-  stopWedding(){
-    document.getElementById("objection").className = "visible"
+  function stopWedding(){
     document.getElementById("story").className = "invisible"
     document.getElementById("display").className = "invisible"
     document.getElementsByTagName("h1")[0].className = "invisible"
   }
 
-	render(){
-		if (this.props.objection){
-			this.stopWedding()
-		}
-		return(
-			<div id="objection" className="invisible">
-				<h2>love is dead</h2>
-			</div>
-		)
+	if (props.objection){
+		stopWedding()
 	}
-}
 
-export default Objection
+	return(
+		<div id="objection">
+			<h2>love is dead</h2>
+		</div>
+	)
+
+}

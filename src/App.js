@@ -130,7 +130,8 @@ class App extends Component {
     const currentChapter = this.state.currentChapter
     return (
       <div className="App">
-        <Objection objection={this.state.objection} stopWedding={this.stopWedding} />
+        {this.state.objection ? <Objection objection={this.state.objection} stopWedding={this.stopWedding} /> : null}
+        
         <h1>Number Marriage</h1>
         <Story currentChapter={currentChapter} bride={this.state.bride} groom={this.state.groom} consumation={this.state.consumation} />
         <br /><br />
