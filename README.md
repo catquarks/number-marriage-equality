@@ -8,6 +8,8 @@ Number Marriage Equality should really just be called Number Marriage, but we wa
 
 May love be with you always.
 
+Special Note: I purposefully did NOT use Redux in this project in an attempt to learn to appreciate Redux all the better!
+
 ## TO-DOs:
 * components should only interpet app state, and app state should be the only thing interpreting JSON
 * ~~Get string interpolation working from JSON story data~~
