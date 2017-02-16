@@ -9,21 +9,32 @@ class UserInput extends Component {
 		}
 	}
 
+	handleSubmit(e){
+		e.preventDefault()
+		e.stopPropagation()
+
+		let input = this.state.input
+    if (!isNaN(input)){
+      input = parseFloat(input)
+    }
+
+    this.setState({input: ''})
+    this.props.handleBrideAndGroom(input)
+    this.props.advanceStory(input)
+	}
+
 	render(){
 		return(
 			<div className="input-form-wrapper">
 				<div className="input-form">
-					<form onSubmit={(event) => {
-						this.props.advanceStep(event, this.state.input)
-						this.setState({
-							input: ''
-						})
+					<form onSubmit={e => {
+						this.handleSubmit(e)
 					}}>
 						<input type="text"
 					  	placeholder={this.props.placeholder}
 					  	value={this.state.input}
 					  	onChange={
-					  		(e) => {
+					  		e => {
 					  			this.setState({
 					  				input: e.target.value
 					  			})

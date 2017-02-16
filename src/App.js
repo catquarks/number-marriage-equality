@@ -19,15 +19,12 @@ class App extends Component {
       groom: null,
       married: false,
       consumation: null,
-      currentDisplay: '',
       objection: false,
-      endReached: false,
-      heartColor: 0
+      endReached: false
     }
-    this.advanceStep = this.advanceStep.bind(this)
-    this.advanceChapter = this.advanceChapter.bind(this)
+    this.advanceStory = this.advanceStory.bind(this)
     this.restartApp = this.restartApp.bind(this)
-    this.stopWedding = this.stopWedding.bind(this)
+    this.handleBrideAndGroom = this.handleBrideAndGroom.bind(this)
   }
 
   componentDidMount(){
@@ -55,83 +52,56 @@ class App extends Component {
     xhr.send(null)
   }
 
-  advanceStep(e, input){
-    e.preventDefault()
-    e.stopPropagation()
-
-    this.handleInputAndDisplay(input)
+  advanceStory(input){
+    const nextStep = this.state.step + 1
 
     if (this.state.currentChapter.proceedWithMatrimony){
       this.performHolyMatrimony(input)
     }
 
-    var nextStep = this.state.step + 1
+    if (this.state.consumation){
 
-    // put this stuff in helper methods
-    if (this.state.married){
+      this.setState({
+        married: true
+      })
+
       if (nextStep === this.state.storyLength - 1){
         this.setState({
           endReached: true
         })
-      }      
+      }
     }
 
     if (!this.state.objection){
-      this.setState({step: nextStep})
-      this.advanceChapter(nextStep)
-    } else {
       this.setState({
-        currentChapter: {placeholder: "it's too late"}
+        step: nextStep,
+        currentChapter: this.state.story[nextStep]
       })
     }
   }
 
-  handleInputAndDisplay(input){
+
+  handleBrideAndGroom(input){
     if (this.state.currentChapter.newVariable){
       var newVariable = this.state.currentChapter.newVariable
-      var newState = {}
-
-      // if input is a number, make it a number
-      if (!isNaN(input)){
-        input = parseFloat(input)
-      }
-
-      newState[newVariable] = input
 
       if (newVariable === "bride"){
         this.setState({
-          currentDisplay: input
+          bride: input
         })
       }
 
       if (newVariable === "groom"){
         this.setState({
-          currentDisplay: this.state.bride + " + " + input
+          groom: input
         })
       }      
-
-      this.setState(newState)
     }
-
-    // if married, show the sum
-    if (this.state.married){
-      this.setState({
-        currentDisplay: this.state.consumation
-      })
-    }
-  }
-
-  advanceChapter(nextStep){
-    var nextChapter = this.state.story[nextStep]
-    this.setState({
-      currentChapter: nextChapter
-    })
   }
 
   performHolyMatrimony(input){
-    if (!input.toLowerCase().includes('object')){
+    if (!input.toString().toLowerCase().includes('object')){
       this.setState({
-        married: true,
         consumation: this.state.bride + this.state.groom
       })
     } else {
@@ -139,16 +109,6 @@ class App extends Component {
         objection: true
       })
     }
-  }
-
-
-
-  stopWedding(){
-    // is there a more React-y way to do this?
-    document.getElementById("objection").className = "visible"
-    document.getElementById("story").className = "invisible"
-    document.getElementById("display").className = "invisible"
-    document.getElementsByTagName("h1")[0].className = "invisible"
   }
 
   restartApp(){
@@ -172,11 +132,11 @@ class App extends Component {
       <div className="App">
         <Objection objection={this.state.objection} stopWedding={this.stopWedding} />
         <h1>Number Marriage</h1>
-        <Story currentChapter={currentChapter} bride={this.state.bride} groom={this.state.groom} />
+        <Story currentChapter={currentChapter} bride={this.state.bride} groom={this.state.groom} consumation={this.state.consumation} />
         <br /><br />
-        <UserInput advanceStep={this.advanceStep} placeholder={currentChapter.placeholder} />
-        <Restart endReached={this.state.endReached} restartApp={this.restartApp} />
-        <Display characters={this.state.currentDisplay} heartColor={this.state.heartColor} />
+        <UserInput advanceStory={this.advanceStory} handleBrideAndGroom={this.handleBrideAndGroom} placeholder={currentChapter.placeholder} />
+        {this.state.endReached ? <Restart restartApp={this.restartApp} /> : null}
+        <Display married={this.state.married} consumation={this.state.consumation} bride={this.state.bride} groom={this.state.groom} heartColor={this.state.heartColor} />
         <Byline />
       </div>
     )

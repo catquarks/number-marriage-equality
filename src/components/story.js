@@ -6,7 +6,7 @@ export default function(props){
   function interpolateString(string){
     var regEx = /(\[\w+\])/
     var array = string.split(regEx)
-    var brideGroom = {bride: props.bride, groom: props.groom}
+    var brideGroom = {bride: props.bride, groom: props.groom, consumation: props.consumation}
 
     var interpolatedText = array.map(word => {
       if (!regEx.exec(word)){
