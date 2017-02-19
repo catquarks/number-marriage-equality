@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './App.css'
 import Story from './components/story'
 import UserInput from './components/user_input'
 import Display from './components/display'
@@ -34,10 +33,9 @@ class App extends Component {
       if (xhr.readyState === 4){
         if (xhr.status === 200){
           var story = JSON.parse(xhr.response).story
-          var storyLength = story.length
           this.setState({
             story: story,
-            storyLength: storyLength,
+            storyLength: story.length,
             currentChapter: story[0]
           })
         } else {
@@ -122,23 +120,23 @@ class App extends Component {
       currentDisplay: '',
       objection: false,
       endReached: false,
-      heartColor: 0
     })
   }
 
   render() {
     const currentChapter = this.state.currentChapter
     return (
-      <div className="App">
-        {this.state.objection ? <Objection objection={this.state.objection} stopWedding={this.stopWedding} /> : null}
-        
+      <div id="app-container">
         <h1>Number Marriage</h1>
-        <Story currentChapter={currentChapter} bride={this.state.bride} groom={this.state.groom} consumation={this.state.consumation} />
-        <br /><br />
-        <UserInput advanceStory={this.advanceStory} handleBrideAndGroom={this.handleBrideAndGroom} placeholder={currentChapter.placeholder} />
-        {this.state.endReached ? <Restart restartApp={this.restartApp} /> : null}
-        <Display married={this.state.married} consumation={this.state.consumation} bride={this.state.bride} groom={this.state.groom} heartColor={this.state.heartColor} />
-        <Byline />
+        <div className="App">
+          {this.state.objection ? <Objection objection={this.state.objection} stopWedding={this.stopWedding} /> : null}
+          <Story currentChapter={currentChapter} bride={this.state.bride} groom={this.state.groom} consumation={this.state.consumation}>
+            <UserInput advanceStory={this.advanceStory} handleBrideAndGroom={this.handleBrideAndGroom} placeholder={currentChapter.placeholder} />
+            {this.state.endReached ? <Restart restartApp={this.restartApp} /> : null}
+          </Story>
+          {!this.state.objection ? <Display married={this.state.married} consumation={this.state.consumation} bride={this.state.bride} groom={this.state.groom} heartColor={this.state.heartColor} /> : null }
+          <Byline />
+        </div>
       </div>
     )
   }

@@ -22,14 +22,16 @@ export default function(props){
   if (props.currentChapter.interpolate){
 		return(
 			<div id="story" className="inlineblock">
-				<pre>{interpolateString(props.currentChapter.chapter)}</pre>
-			</div>
-		)
+				<p>{interpolateString(props.currentChapter.chapter)}</p>
+        {props.children}
+      </div>
+    )
 
   } else {
-		return(
-			<div id="story" className="inlineblock">
-				<pre>{props.currentChapter.chapter}</pre>
+    return(
+      <div id="story" className="inlineblock">
+        <p>{props.currentChapter.chapter}</p>
+        {props.children}
 			</div>
 		)
   }

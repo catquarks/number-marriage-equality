@@ -1,20 +1,19 @@
 #story {
-	font-size: 18pt;
-	margin-top: 0.25em;
+	font-size: 1em;
 	background: #fafafa;
-	width: 27em;
-	height: 9em;
+	width: 21em;
+	padding-bottom: 1em;
+	height: auto;
+	max-height: 11em;
 	border: dashed #b00 2px;
 	border-radius: 10%;
-
+	text-align: center;
+	flex-grow: 1;
 }
 
-.inlineblock {
-	/* weird, but necessary for story box to disappear in case of objection */
-	display: inline-block;
-}
-
-pre {
-	padding: 10px;
+#story p {
+	vertical-align: middle;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
 	font-family: sans-serif;
 }

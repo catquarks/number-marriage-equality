@@ -5,15 +5,14 @@
 .input-form {
 	display: inline-block;
 	margin: auto;
-	background: red;
 }
 
 input[type=text] {
 	width: 18em;
-	border: dashed #b00 1px;
+	border: solid #b00 1px;
 	padding: 10px;
 }
 
 input[type=text]:focus {
-	border: dotted #ff5555 3px;
+	border: solid #ff5555 3px;
 }

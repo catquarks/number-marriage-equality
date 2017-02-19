@@ -4,9 +4,7 @@ import './css/objection.css'
 export default function(props){
 
   function stopWedding(){
-		document.getElementById("user-input").innerHTML = "you can never go back"
     document.getElementById("story").className = "invisible"
-    document.getElementById("display").className = "invisible"
     document.getElementsByTagName("h1")[0].className = "invisible"
   }
 

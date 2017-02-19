@@ -1,13 +1,9 @@
-svg {
-	margin: auto;
-	width: 500px;
-	height: 500px;
-}
-
-#heart {
-	width: 500px;
-	height: 500px;
-	width: 50%;
+#display {
+	width: auto;
+	display: inline-block;
+	flex-grow: 1;
+	margin-left: 2em;
+	margin-right: 2em;
 }
 
 svg > text {
